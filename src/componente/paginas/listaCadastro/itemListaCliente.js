@@ -1,24 +1,17 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { useGetClientesQuery } from "../../../app/api/apiSlice"
 
 
+const ItemListaCliente = (props) => {
 
-
-const ItemListaCliente = () => {
-
-    const {data, 
-        isLoading,
-        isSuccess,
-        isError
-      } = useGetClientesQuery();
+    
       
       let content;
-      if(isLoading){
+      if(props.isLoading){
         content = <tr>Loading.....</tr>;
-      }else if(isSuccess){
+      }else if(props.isSuccess){
       
-        content = data && data.clientes.map(clientes => {
+        content = props.data && props.data.clientes.map(clientes => {
             return (
                 
                 <tr ClassName="tr" key={clientes.id}>
@@ -30,7 +23,7 @@ const ItemListaCliente = () => {
                 </tr> )})
       
         
-      }else if (isError){
+      }else if (props.isError){
         content =  <tr><td>error</td></tr>
       }
 

@@ -2,10 +2,18 @@ import React from 'react';
 
 import './style.css'
 import ItemListaCliente from './itemListaCliente';
+import { useGetClientesQuery } from "../../../app/api/apiSlice"
 
 import { Link } from 'react-router-dom';
 
 const List = () => {
+
+
+    const {data, 
+        isLoading,
+        isSuccess,
+        isError
+      } = useGetClientesQuery();
 
 
  return  <div className="dsmeta-card">
@@ -24,7 +32,11 @@ const List = () => {
          </thead>
          <tbody>
         
-         <ItemListaCliente />;
+         <ItemListaCliente 
+         data={data}
+         isLoading= {isLoading}
+         isSuccess={isSuccess} 
+         isError={isError}/>;
    
          </tbody>
          <Link to="/">Pagina Inicial</Link>

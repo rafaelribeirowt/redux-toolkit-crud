@@ -23,8 +23,8 @@ export const apiCliente = createApi({
             }),
         }),
         updateCliente: builder.mutation({
-            query:( { id, ...patch }) => ({
-                url: `/clientes/${id}`,
+            query:( { idupdate, ...patch }) => ({
+                url: `/clientes/${idupdate}`,
                 method: 'PATCH',
                 body: patch,
             }),
