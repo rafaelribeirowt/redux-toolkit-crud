@@ -15,6 +15,20 @@ const List = () => {
         isError
       } = useGetClientesQuery();
 
+      let content;
+      if(isLoading){
+        content = <tr>Loading.....</tr>;
+      }else if(isSuccess){
+        content = <ItemListaCliente 
+                    data={data}/>;
+
+    }
+    else if (isError){
+        content =  <tr><td>error</td></tr>
+      }
+
+
+
 
  return  <div className="dsmeta-card">
  <h2 className="title">Lista de clientes</h2>
@@ -32,11 +46,7 @@ const List = () => {
          </thead>
          <tbody>
         
-         <ItemListaCliente 
-         data={data}
-         isLoading= {isLoading}
-         isSuccess={isSuccess} 
-         isError={isError}/>;
+         {content}
    
          </tbody>
          <Link to="/">Pagina Inicial</Link>

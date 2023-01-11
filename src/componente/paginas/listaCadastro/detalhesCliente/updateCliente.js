@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import {useUpdateClienteMutation} from "../../../../app/api/apiSlice"
+import {useUpdateClienteMutation, useDeleteClienteMutation} from "../../../../app/api/apiSlice"
+
 
 const UpdateCliente = (id) =>{
 
     const idupdate = id.id;
 
     const [update, {isSuccess, isLoading, isError, error}] = useUpdateClienteMutation();
-
-
+   
     const [mensagem, setMensagem] = useState('');
     const [nome, setNome] = useState('');
     
@@ -35,20 +35,19 @@ const UpdateCliente = (id) =>{
         }, [isLoading, isSuccess, isError])
 
         return (
-            <>
+            <form onSubmit={handleUpdate}>
             <input           
             type="text"
             value={nome}
+            required
             onChange={(event) => {
               setNome(event.target.value);
             }}/>
 
-            <button
-            onClick={handleUpdate}
-            >Editar</button>
+            <button type="submit" >Editar</button>
         
             <label> {mensagem}</label>
-            </>
+            </form>
         )
 }
 

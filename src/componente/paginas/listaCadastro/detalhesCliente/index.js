@@ -9,8 +9,6 @@ const DetalhesCliente = () => {
     
     const { id } = useParams()
 
-    
-    
     const {data, isSuccess , isLoading, isError, error} =  useGetClienteByIdQuery({id}.id)
 
   let content;
